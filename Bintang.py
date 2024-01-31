@@ -22,8 +22,8 @@ st.markdown(
 st.markdown(
     """
     <div style="text-align: center;">
-        <h1 style="font-size:50px;">Nama Darma Alif Rakhaa</h1>
-        <h2 style="font-size:30px;">Darma :thumbs_up: </h2>
+        <h1 style="font-size:50px;">Darma Alif Rakhaa</h1>
+        <h2 style="font-size:30px;">Darma 👍 </h2>
     </div>
     """
     , unsafe_allow_html=True
@@ -87,3 +87,4 @@ with col2:
     ax_cos.set_xticklabels(ax_cos.get_xticklabels(), rotation=30, ha='right')
     ax_cos.tick_params(axis='x', labelsize=15)
     st.pyplot(fig_cos)
+st.caption('Copyleft © Darma ALif Rakhaa 2024')
