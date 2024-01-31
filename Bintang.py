@@ -23,7 +23,7 @@ st.markdown(
     """
     <div style="text-align: center;">
         <h1 style="font-size:50px;">Nama Darma Alif Rakhaa</h1>
-        <h2 style="font-size:30px;">Darma:thumbs_up:</h2>
+        <h2 style="font-size:30px;">Darma :thumbs_up: </h2>
     </div>
     """
     , unsafe_allow_html=True
