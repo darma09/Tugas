@@ -24,16 +24,16 @@ angka2 = st.number_input("Masukkan angka kedua:")
 
 if pilihan == "Penjumlahan":
     hasil = tambah(angka1, angka2)
-    st.write("Hasil penjumlahan:", hasil)
+    st.markdown(f"**Hasil penjumlahan:** {hasil}")
 elif pilihan == "Pengurangan":
     hasil = kurang(angka1, angka2)
-    st.write("Hasil pengurangan:", hasil)
+    st.markdown(f"**Hasil pengurangan:** {hasil}")
 elif pilihan == "Perkalian":
     hasil = kali(angka1, angka2)
-    st.write("Hasil perkalian:", hasil)
+    st.markdown(f"**Hasil perkalian:** {hasil}")
 elif pilihan == "Pembagian":
     hasil = bagi(angka1, angka2)
-    st.write("Hasil pembagian:", hasil)
+    st.markdown(f"**Hasil pembagian:** {hasil}")
 else:
     st.write("Pilihan tidak valid")
 
