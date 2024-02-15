@@ -12,7 +12,7 @@ def kali(a, b):
 def bagi(a, b):
     return a / b
 
-st.title("KALKULATOR")
+st.title("KALKULAKTOR")
 
 # Display the name of the program creator
 st.header("💀Darma Alif Rakhaa💀")
