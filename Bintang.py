@@ -32,16 +32,22 @@ elif pilihan == "Perkalian":
     hasil = kali(angka1, angka2)
     st.markdown(f"**Hasil perkalian:** {hasil}")
 elif pilihan == "Pembagian":
-    hasil = bagi(angka1, angka2)
-    st.markdown(f"**Hasil pembagian:** {hasil}")
+    if angka2 != 0:
+        hasil = bagi(angka1, angka2)
+        st.markdown(f"**Hasil pembagian:** {hasil}")
+    else:
+        st.write("Tidak dapat membagi dengan angka 0")
 elif pilihan == "Persentase ke Angka":
     persen = float(st.number_input("Masukkan persentase:", value=0, step=0.01))
     hasil = persen / 100 * angka2
     st.markdown(f"**Hasil konversi persentase ke angka:** {hasil}")
 elif pilihan == "Angka ke Persentase":
-    angka = float(st.number_input("Masukkan angka:", value=0, step=1))
-    persen = angka / angka2 * 100
-    st.markdown(f"**Hasil konversi angka ke persentase:** {persen}%")
+    if angka2 != 0:
+        angka = float(st.number_input("Masukkan angka:", value=0, step=1))
+        persen = angka / angka2 * 100
+        st.markdown(f"**Hasil konversi angka ke persentase:** {persen}%")
+    else:
+        st.write("Tidak dapat mengkonversi dengan angka 0")
 else:
     st.write("Pilihan tidak valid")
 
