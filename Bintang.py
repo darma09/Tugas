@@ -19,8 +19,8 @@ st.header("💀Darma Alif Rakhaa💀")
 
 pilihan = st.selectbox("Pilih operasi:", ["Penjumlahan", "Pengurangan", "Perkalian", "Pembagian"])
 
-angka1 = st.number_input("Masukkan angka pertama:")
-angka2 = st.number_input("Masukkan angka kedua:")
+angka1 = int(st.number_input("Masukkan angka pertama:"))
+angka2 = int(st.number_input("Masukkan angka kedua:"))
 
 if pilihan == "Penjumlahan":
     hasil = tambah(angka1, angka2)
@@ -36,6 +36,7 @@ elif pilihan == "Pembagian":
     st.markdown(f"**Hasil pembagian:** {hasil}")
 else:
     st.write("Pilihan tidak valid")
+
 
 
 st.caption('Copyleft © Darma Alif Rakhaa 2024')
