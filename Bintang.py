@@ -15,7 +15,7 @@ def bagi(a, b):
 st.title("KALKULATOR")
 
 # Display the name of the program creator
-st.header("Darma Alif Rakhaa")
+st.header("💀Darma Alif Rakhaa💀")
 
 pilihan = st.selectbox("Pilih operasi:", ["Penjumlahan", "Pengurangan", "Perkalian", "Pembagian"])
 
@@ -38,4 +38,4 @@ else:
     st.write("Pilihan tidak valid")
 
 
-st.caption('Copyleft © Darma ALif Rakhaa 2024')
+st.caption('Copyleft © Darma Alif Rakhaa 2024')
