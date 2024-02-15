@@ -1,4 +1,5 @@
 import streamlit as st
+
 def tambah(a, b):
     return a + b
 
@@ -12,6 +13,9 @@ def bagi(a, b):
     return a / b
 
 st.title("KALKULATOR")
+
+# Display the name of the program creator
+st.header("Darma Alif Rakhaa")
 
 pilihan = st.selectbox("Pilih operasi:", ["Penjumlahan", "Pengurangan", "Perkalian", "Pembagian"])
 
@@ -32,5 +36,6 @@ elif pilihan == "Pembagian":
     st.write("Hasil pembagian:", hasil)
 else:
     st.write("Pilihan tidak valid")
+
 
 st.caption('Copyleft © Darma ALif Rakhaa 2024')
