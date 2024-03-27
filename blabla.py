@@ -180,6 +180,7 @@ input_encoded.columns = input_encoded.columns.str.split('.').str[0]
 prediction = load_clf.predict(input_encoded)
 prediction_proba = load_clf.predict_proba(input_encoded)
 prediction_proba_percent = prediction_proba[0] * 100
+prediction_proba_formatted = [f"{prob:.2f}%" for prob in prediction_proba_percent]
 
 
 # Display the prediction and prediction probability
