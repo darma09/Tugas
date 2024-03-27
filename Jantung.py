@@ -117,7 +117,7 @@ if __name__ == '__main__':
         resting_electrocardiographic = st.selectbox("Resting Electrocardiographic", ("Normal", "ST-T wave abnormality", "Left ventricular hypertrophy"))
         maximum_heart_rate_achieved = st.number_input("Maximum Heart Rate Achieved", min_value=0, max_value=250, step=1)
         exercise_induced_angina = st.selectbox("Exercise Induced Angina", ("No", "Yes"))
-        st_depression = st.number_input("ST Depression", min_value=0, max_value=10, step=0.1)
+        st_depression = st.number_input("ST Depression", min_value=0, max_value=10, step=1)
         slope_of_the_peak_exercise_st_segment = st.selectbox("Slope of the Peak Exercise ST Segment", ("Upsloping", "Flat", "Downsloping"))
         number_of_major_vessels = st.number_input("Number of Major Vessels", min_value=0, max_value=4, step=1)
         thalassemia = st.selectbox("Thalassemia", ("Normal", "Fixed Defect", "Reversible Defect"))
