@@ -9,7 +9,7 @@ from sklearn.ensemble import RandomForestClassifier
 
 import matplotlib.pyplot as plt
 
-filePath = 'C:/Users/User/Downloads/heart.csv'
+filePath = 'https://raw.githubusercontent.com/darma09/Tugas/main/heart.csv'
 
 data = pd.read_csv(filePath)
 
