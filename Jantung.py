@@ -37,9 +37,6 @@ sns.heatmap(corr, xticklabels=corr.columns,
 subData = data[['age','trestbps','chol','thalach','oldpeak']]
 sns.pairplot(subData)
 
-
-
-
 sns.catplot(x="target", y="oldpeak", hue="slope", kind="bar", data=data);
 
 plt.title('ST depression (induced by exercise relative to rest) vs. Heart Disease',size=25)
@@ -108,19 +105,19 @@ if __name__ == '__main__':
     # Define the user input form
     col1, col2 = st.columns(2)
     with col1:
-        age = st.number_input("Age")
-        sex = st.selectbox("Sex", ("0", "1"))
-        chest_pain = st.selectbox("Chest Pain", ("0", "1", "2", "3", "4"))
-        resting_blood_pressure = st.number_input("Resting Blood Pressure")
-        serum_cholesterol = st.number_input("Serum Cholesterol")
-        fasting_blood_sugar = st.selectbox("Fasting Blood Sugar", ("0", "1"))
-        resting_electrocardiographic = st.selectbox("Resting Electrocardiographic", ("0", "1"))
-        maximum_heart_rate_achieved = st.number_input("Maximum Heart Rate Achieved")
-        exercise_induced_angina = st.selectbox("Exercise Induced Angina", ("0", "1"))
-        st_depression = st.number_input("ST Depression")
-        slope_of_the_peak_exercise_st_segment = st.selectbox("Slope of the Peak Exercise ST Segment", ("0", "1", "2"))
-        number_of_major_vessels = st.number_input("Number of Major Vessels")
-        thalassemia = st.selectbox("Thalassemia", ("0", "1", "2"))
+        age = st.number_input("Age", format_func=int)
+        sex = st.selectbox("Sex", ("0", "1"), format_func=int)
+        chest_pain = st.selectbox("Chest Pain", ("0", "1", "2", "3", "4"), format_func=int)
+        resting_blood_pressure = st.number_input("Resting Blood Pressure", format_func=int)
+        serum_cholesterol = st.number_input("Serum Cholesterol", format_func=int)
+        fasting_blood_sugar = st.selectbox("Fasting Blood Sugar", ("0", "1"), format_func=int)
+        resting_electrocardiographic = st.selectbox("Resting Electrocardiographic", ("0", "1"), format_func=int)
+        maximum_heart_rate_achieved = st.number_input("Maximum Heart Rate Achieved", format_func=int)
+        exercise_induced_angina = st.selectbox("Exercise Induced Angina", ("0", "1"), format_func=int)
+        st_depression = st.number_input("ST Depression", format_func=float)
+        slope_of_the_peak_exercise_st_segment = st.selectbox("Slope of the Peak Exercise ST Segment", ("0", "1", "2"), format_func=int)
+        number_of_major_vessels = st.number_input("Number of Major Vessels", format_func=int)
+        thalassemia = st.selectbox("Thalassemia", ("0", "1", "2"), format_func=int)
 
 
     # Define the prediction button
