@@ -10,7 +10,10 @@ from sklearn.ensemble import RandomForestClassifier
 import matplotlib.pyplot as plt
 
 filePath = 'https://raw.githubusercontent.com/darma09/Tugas/main/heart.csv'
-
+# Set page layout to wide mode
+st.beta_set_page_config(layout="wide")
+# Define the user input form
+col1, col2 = st.beta_columns(2)
 data = pd.read_csv(filePath)
 
 data.head(5)
@@ -36,6 +39,22 @@ sns.heatmap(corr, xticklabels=corr.columns,
 
 subData = data[['age','trestbps','chol','thalach','oldpeak']]
 sns.pairplot(subData)
+
+with col1:
+    age = st.number_input("Age")
+    sex = st.selectbox("Sex", ("0", "1"))
+    chest_pain = st.selectbox("Chest Pain", ("0", "1", "2", "3", "4"))
+    resting_blood_pressure = st.number_input("Resting Blood Pressure")
+    serum_cholesterol = st.number_input("Serum Cholesterol")
+    fasting_blood_sugar = st.selectbox("Fasting Blood Sugar", ("0", "1"))
+    resting_electrocardiographic = st.selectbox("Resting Electrocardiographic", ("0", "1"))
+    maximum_heart_rate_achieved = st.number_input("Maximum Heart Rate Achieved")
+    exercise_induced_angina = st.selectbox("Exercise Induced Angina", ("0", "1"))
+    st_depression = st.number_input("ST Depression")
+    slope_of_the_peak_exercise_st_segment = st.selectbox("Slope of the Peak Exercise ST Segment", ("0", "1", "2"))
+    number_of_major_vessels = st.number_input("Number of Major Vessels")
+    thalassemia = st.selectbox("Thalassemia", ("0", "1", "2"))
+
 
 sns.catplot(x="target", y="oldpeak", hue="slope", kind="bar", data=data);
 
@@ -91,12 +110,6 @@ index= data.columns[:-1]
 importance = pd.Series(model6.feature_importances_, index=index)
 importance.nlargest(13).plot(kind='barh', colormap='winter')
 
-new_data = st.text_input("Masukkan data baru (usia, jenis kelamin, dan lainnya) dalam format: usia, jenis_kelamin, ...", "20, 1, 2, 110, 230, 1, 1, 140, 1, 2.2, 2, 0, 2", key="input1")
-new_data = [float(x.strip()) for x in new_data.split(',')]
-
-scaled_data = sc.transform([new_data])
-prediction = model6.predict(scaled_data)
-
 if prediction == 1:
     print("The result indicates a risk of heart disease.")
 else:
@@ -112,16 +125,12 @@ if __name__ == '__main__':
     st.title('Heart Disease Classification')
     st.write('This app predicts the presence of heart disease based on various features.')
 
-    st.subheader('Prediction')
-    new_data = st.text_input("Masukkan data baru (usia, jenis kelamin, dan lainnya) dalam format: usia, jenis_kelamin, ...", "20, 1, 2, 110, 230, 1, 1, 140, 1, 2.2, 2, 0, 2", key="input2")
-    new_data = [float(x.strip()) for x in new_data.split(',')]
-    scaled_data = sc.transform([new_data])
-    prediction = model6.predict(scaled_data)
-
-    if prediction == 1:
-        st.write("The result indicates a risk of heart disease.")
-    else:
-        st.write("The result suggests no significant risk of heart disease.")
-
-    st.subheader('Prediction Results')
-    st.write(hasil_gabungan)
+    # Define the prediction button
+    if st.button("Predict"):
+        user_input = np.array([age, int(sex), int(chest_pain), resting_blood_pressure, serum_cholesterol, int(fasting_blood_sugar), int(resting_electrocardiographic), maximum_heart_rate_achieved, int(exercise_induced_angina), st_depression, int(slope_of_the_peak_exercise_st_segment), int(number_of_major_vessels), int(thalassemia)])
+        user_input = sc.transform([user_input])
+        prediction = model6.predict(user_input)
+        if prediction == 1:
+            st.write("The result indicates a risk of heart disease.")
+        else:
+            st.write("The result suggests no significant risk of heart disease.")
