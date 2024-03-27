@@ -158,21 +158,20 @@ heart_dataset = heart_dataset.drop(columns=['target'])
 df = pd.concat([input_df,heart_dataset],axis=0)
 
 # Encoding of ordinal features
-# https://www.kaggle.com/pratik1120/penguin-dataset-eda-classification-and-clustering
-df = pd.get_dummies(df, columns = ['sex', 'cp', 'fbs', 'restecg', 'exang', 'slope', 'ca', 'thal'])
+df_encoded = pd.get_dummies(df, columns=['sex', 'cp', 'fbs', 'restecg', 'exang', 'slope', 'ca', 'thal'])
 
-df = df[:1] # Selects only the first row (the user input data)
+# Select only the first row (the user input data)
 
-st.write(input_df)
-# Reads in saved classification model
-load_clf = pickle.load(open('Random_forest_model.pkl', 'rb'))
-
-# Apply model to make predictions
-prediction = load_clf.predict(input_df)
-prediction_proba = load_clf.predict_proba(input_df)
+input_encoded = df_encoded[:1]
 
 
-st.subheader('Prediction')
+# Make predictions using the loaded classification model
+prediction = load_clf.predict(input_encoded)
+prediction_proba = load_clf.predict_proba(input_encoded)
+
+
+# Display the prediction and prediction probability
+st.subheader('Prediction')')
 st.write(prediction)
 
 st.subheader('Prediction Probability')
