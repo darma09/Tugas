@@ -8,6 +8,8 @@ from sklearn.metrics import classification_report
 from sklearn.ensemble import RandomForestClassifier
 
 import matplotlib.pyplot as plt
+git clone https://github.com/darma09/Tugas.git heart_data
+git pull origin master
 
 filePath = 'https://raw.githubusercontent.com/darma09/Tugas/main/heart.csv'
 
