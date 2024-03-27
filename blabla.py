@@ -179,11 +179,17 @@ input_encoded.columns = input_encoded.columns.str.split('.').str[0]
 # Make predictions using the loaded classification model
 prediction = load_clf.predict(input_encoded)
 prediction_proba = load_clf.predict_proba(input_encoded)
+prediction_proba_percent = prediction_proba[0] * 100
 
 
 # Display the prediction and prediction probability
 st.subheader('Prediction')
+if prediction == [0]:
+    st.write("Tidak Ada Penyakit Jantung")
+else:
+    st.write("Ada Penyakit Jantung")
 st.write(prediction)
 
-st.subheader('Prediction Probability')
+st.subheader('Prediksi Terkena penyakit Jantung')
 st.write(prediction_proba)
+st.write("0: Tidak Ada Penyakit Jantung, 1: Ada Penyakit Jantung")
