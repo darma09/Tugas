@@ -108,8 +108,19 @@ st.write("""
 # Heart disease Prediction App
 
 This app predicts If a patient has a heart disease
-
-Data obtained from Kaggle: https://www.kaggle.com/datasets/johnsmith88/heart-disease-dataset.
+         jika tidak tahu apa atau maksudnya yang di input bisa baca pada informasi dibawah ini
+Information :
+         1. Masukan umur kalian
+         2. Jenis kelamin kalian (0: laki-laki, 1: perempuan)
+         3. Jenis nyeri dada (0: angina tipikal, 1: angina atipikal, 2: nyeri non-angina, 3: tanpa gejala)
+         atau kunjungi website : https://www.halodoc.com/artikel/ketahui-4-jenis-jenis-nyeri-dada-yang-perlu-diwaspadai
+         4. Tekanan darah istirahat
+         5. Kolesterol serum dalam mg/dl
+         6. Gula darah puasa > 120 mg/dl (1: true, 0: false)
+         7. Gula darah sehingga hasil elektrokardiografi istirahat > 90 mg/dl (1: normal, 0: abnormal)
+         8. EKG epidimiokardiografi maksimum yang dicapai adalah ≥ 50% QRS normal (1: ya, 0: tidak)
+        
+    
 """)
 
 st.sidebar.header('User Input Features')
@@ -119,9 +130,9 @@ st.sidebar.header('User Input Features')
 # Collects user input features into dataframe
 
 def user_input_features():
-    age = st.sidebar.number_input('Enter your age: ')
+    age = st.sidebar.number_input('Masukan umur: ')
 
-    sex  = st.sidebar.selectbox('Sex',(0,1))
+    sex  = st.sidebar.selectbox('Gender',(0,1))
     cp = st.sidebar.selectbox('Chest pain type',(0,1,2,3))
     tres = st.sidebar.number_input('Resting blood pressure: ')
     chol = st.sidebar.number_input('Serum cholestoral in mg/dl: ')
