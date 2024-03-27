@@ -106,7 +106,7 @@ if __name__ == '__main__':
     st.title('Heart Disease Classification')
     st.write('This app predicts the presence of heart disease based on various features.')
     # Define the user input form
-    col1, col2 = st.beta_columns(2)
+    col1, col2 = st.columns(2)
     with col1:
         age = st.number_input("Age")
         sex = st.selectbox("Sex", ("0", "1"))
