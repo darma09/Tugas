@@ -168,8 +168,8 @@ st.write(input_df)
 load_clf = pickle.load(open('Random_forest_model.pkl', 'rb'))
 
 # Apply model to make predictions
-prediction = load_clf.predict(df)
-prediction_proba = load_clf.predict_proba(df)
+prediction = load_clf.predict(input_df)
+prediction_proba = load_clf.predict_proba(input_df)
 
 
 st.subheader('Prediction')
