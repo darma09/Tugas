@@ -3,6 +3,4 @@ PythonTurtle==0.3.2
 matplotlib==3.8.0
 numpy
 pandas
-matplotlib
 seaborn
-matplotlib.pyplot
