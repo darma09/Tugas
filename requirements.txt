@@ -4,6 +4,5 @@ matplotlib==3.8.0
 numpy
 pandas
 seaborn
-sklearn
 scikit
 scikit-learn
