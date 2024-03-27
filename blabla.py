@@ -171,7 +171,7 @@ prediction_proba = load_clf.predict_proba(input_encoded)
 
 
 # Display the prediction and prediction probability
-st.subheader('Prediction')')
+st.subheader('Prediction')
 st.write(prediction)
 
 st.subheader('Prediction Probability')
