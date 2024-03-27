@@ -6,6 +6,5 @@ pandas
 seaborn
 sklearn
 scikit
-pip install scikit-learn
 scikit-learn
 SKLEARN_ALLOW_DEPRECATED_SKLEARN_PACKAGE_INSTALL=True
