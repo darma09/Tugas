@@ -91,7 +91,7 @@ index= data.columns[:-1]
 importance = pd.Series(model6.feature_importances_, index=index)
 importance.nlargest(13).plot(kind='barh', colormap='winter')
 
-new_data = st.text_input("Masukkan data baru (usia, jenis kelamin, dan lainnya) dalam format: usia, jenis_kelamin, ...", "20, 1, 2, 110, 230, 1, 1, 140, 1, 2.2, 2, 0, 2")
+new_data = st.text_input("Masukkan data baru (usia, jenis kelamin, dan lainnya) dalam format: usia, jenis_kelamin, ...", "20, 1, 2, 110, 230, 1, 1, 140, 1, 2.2, 2, 0, 2", key="input1")
 new_data = [float(x.strip()) for x in new_data.split(',')]
 
 scaled_data = sc.transform([new_data])
@@ -113,7 +113,7 @@ if __name__ == '__main__':
     st.write('This app predicts the presence of heart disease based on various features.')
 
     st.subheader('Prediction')
-    new_data = st.text_input("Masukkan data baru (usia, jenis kelamin, dan lainnya) dalam format: usia, jenis_kelamin, ...", "20, 1, 2, 110, 230, 1, 1, 140, 1, 2.2, 2, 0, 2")
+    new_data = st.text_input("Masukkan data baru (usia, jenis kelamin, dan lainnya) dalam format: usia, jenis_kelamin, ...", "20, 1, 2, 110, 230, 1, 1, 140, 1, 2.2, 2, 0, 2", key="input2")
     new_data = [float(x.strip()) for x in new_data.split(',')]
     scaled_data = sc.transform([new_data])
     prediction = model6.predict(scaled_data)
