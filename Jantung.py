@@ -7,11 +7,6 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import classification_report
 from sklearn.ensemble import RandomForestClassifier
 
-from scikit-learn.model_selection import train_test_split
-from scikit-learn.preprocessing import StandardScaler
-from scikit-learn.metrics import classification_report
-from scikit-learn.ensemble import RandomForestClassifier
-
 import matplotlib.pyplot as plt
 
 filePath = 'https://raw.githubusercontent.com/darma09/Tugas/main/heart.csv'
