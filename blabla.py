@@ -165,7 +165,7 @@ df_encoded = pd.get_dummies(df, columns=['sex', 'cp', 'fbs', 'restecg', 'exang',
 # Select only the first row (the user input data)
 
 input_encoded = df_encoded[:1]
-
+input_encoded.columns = input_encoded.columns.str.split('.').str[0]
 
 # Make predictions using the loaded classification model
 prediction = load_clf.predict(input_encoded)
