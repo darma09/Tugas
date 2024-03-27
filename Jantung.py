@@ -105,8 +105,6 @@ print(hasil_gabungan)
 if __name__ == '__main__':
     st.title('Heart Disease Classification')
     st.write('This app predicts the presence of heart disease based on various features.')
-    # Set page layout to wide mode
-    st.set_page_config(layout="wide")
     # Define the user input form
     col1, col2 = st.beta_columns(2)
     with col1:
