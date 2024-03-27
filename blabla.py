@@ -130,7 +130,7 @@ def user_input_features():
     tha = st.sidebar.number_input('Maximum heart rate achieved: ')
     exa = st.sidebar.selectbox('Exercise induced angina: ',(0,1))
     old = st.sidebar.number_input('oldpeak ',)
-    slope = st.sidebar.number_input('he slope of the peak exercise ST segmen: ', (0,1,2))
+    slope = st.sidebar.number_input('he slope of the peak exercise ST segmen: ',(0,1,2))
     ca = st.sidebar.selectbox('number of major vessels',(0,1,2,3))
     thal = st.sidebar.selectbox('thal',(0,1,2,3))
 
