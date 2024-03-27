@@ -10,11 +10,8 @@ from sklearn.ensemble import RandomForestClassifier
 import matplotlib.pyplot as plt
 
 filePath = 'https://raw.githubusercontent.com/darma09/Tugas/main/heart.csv'
-# Set page layout to wide mode
-st.beta_set_page_config(layout="wide")
-# Define the user input form
-col1, col2 = st.beta_columns(2)
 data = pd.read_csv(filePath)
+st.title("Heart Disease Classification")
 
 data.head(5)
 
@@ -40,20 +37,7 @@ sns.heatmap(corr, xticklabels=corr.columns,
 subData = data[['age','trestbps','chol','thalach','oldpeak']]
 sns.pairplot(subData)
 
-with col1:
-    age = st.number_input("Age")
-    sex = st.selectbox("Sex", ("0", "1"))
-    chest_pain = st.selectbox("Chest Pain", ("0", "1", "2", "3", "4"))
-    resting_blood_pressure = st.number_input("Resting Blood Pressure")
-    serum_cholesterol = st.number_input("Serum Cholesterol")
-    fasting_blood_sugar = st.selectbox("Fasting Blood Sugar", ("0", "1"))
-    resting_electrocardiographic = st.selectbox("Resting Electrocardiographic", ("0", "1"))
-    maximum_heart_rate_achieved = st.number_input("Maximum Heart Rate Achieved")
-    exercise_induced_angina = st.selectbox("Exercise Induced Angina", ("0", "1"))
-    st_depression = st.number_input("ST Depression")
-    slope_of_the_peak_exercise_st_segment = st.selectbox("Slope of the Peak Exercise ST Segment", ("0", "1", "2"))
-    number_of_major_vessels = st.number_input("Number of Major Vessels")
-    thalassemia = st.selectbox("Thalassemia", ("0", "1", "2"))
+
 
 
 sns.catplot(x="target", y="oldpeak", hue="slope", kind="bar", data=data);
@@ -110,20 +94,36 @@ index= data.columns[:-1]
 importance = pd.Series(model6.feature_importances_, index=index)
 importance.nlargest(13).plot(kind='barh', colormap='winter')
 
-if prediction == 1:
-    print("The result indicates a risk of heart disease.")
-else:
-    print("The result suggests no significant risk of heart disease.")
-
 y_pred = model6.predict(x_test)
 
 hasil_gabungan = np.concatenate((y_pred.reshape(len(y_pred), 1), y_test.reshape(len(y_test), 1)), axis=1)
 
 print(hasil_gabungan)
 
+
+
 if __name__ == '__main__':
     st.title('Heart Disease Classification')
     st.write('This app predicts the presence of heart disease based on various features.')
+    # Set page layout to wide mode
+    st.beta_set_page_config(layout="wide")
+    # Define the user input form
+    col1, col2 = st.beta_columns(2)
+    with col1:
+        age = st.number_input("Age")
+        sex = st.selectbox("Sex", ("0", "1"))
+        chest_pain = st.selectbox("Chest Pain", ("0", "1", "2", "3", "4"))
+        resting_blood_pressure = st.number_input("Resting Blood Pressure")
+        serum_cholesterol = st.number_input("Serum Cholesterol")
+        fasting_blood_sugar = st.selectbox("Fasting Blood Sugar", ("0", "1"))
+        resting_electrocardiographic = st.selectbox("Resting Electrocardiographic", ("0", "1"))
+        maximum_heart_rate_achieved = st.number_input("Maximum Heart Rate Achieved")
+        exercise_induced_angina = st.selectbox("Exercise Induced Angina", ("0", "1"))
+        st_depression = st.number_input("ST Depression")
+        slope_of_the_peak_exercise_st_segment = st.selectbox("Slope of the Peak Exercise ST Segment", ("0", "1", "2"))
+        number_of_major_vessels = st.number_input("Number of Major Vessels")
+        thalassemia = st.selectbox("Thalassemia", ("0", "1", "2"))
+
 
     # Define the prediction button
     if st.button("Predict"):
