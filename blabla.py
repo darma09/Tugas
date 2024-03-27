@@ -179,7 +179,7 @@ input_encoded.columns = input_encoded.columns.str.split('.').str[0]
 # Make predictions using the loaded classification model
 prediction = load_clf.predict(input_encoded)
 prediction_proba = load_clf.predict_proba(input_encoded)
-prediction_proba_percent = ['{:.2f}%'.format(prob * 100) for prob in prediction_proba[0]]
+prediction_proba_percent = ['Ada penyakit Jantung: {:.2f}%'.format(prob * 100) if prob >= 0.5 else 'Tidak ada penyakit jantung: {:.2f}%'.format(prob * 100) for prob in prediction_proba[0]]
 prediction_proba_percent = ', '.join(prediction_proba_percent)
 
 
