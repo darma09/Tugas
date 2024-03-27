@@ -7,7 +7,6 @@ Original file is located at
     https://colab.research.google.com/drive/1Z7tLVUFWIA514YR3TRWWzynP12iGkX4t
 """
 
-drive.mount('/content/drive')
 
 import numpy as np
 import pandas as pd
