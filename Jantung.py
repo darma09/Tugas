@@ -80,7 +80,8 @@ x_test = sc.transform(x_test)
 
 
 model6 = RandomForestClassifier(random_state=1)
-model6.fit(x_train, y_train)
+model6.load_model('model6.pkl')
+
 
 y_pred6 = model6.predict(x_test)
 print(classification_report(y_test, y_pred6))
