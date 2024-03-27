@@ -179,8 +179,7 @@ input_encoded.columns = input_encoded.columns.str.split('.').str[0]
 # Make predictions using the loaded classification model
 prediction = load_clf.predict(input_encoded)
 prediction_proba = load_clf.predict_proba(input_encoded)
-prediction_proba_percent = prediction_proba[0] * 100
-prediction_proba_formatted = [f"{prob:.2f}%" for prob in prediction_proba_percent]
+prediction_proba_percent = ['{:.2f}%'.format(prob * 100) for prob in prediction_proba[0]]
 
 
 # Display the prediction and prediction probability
