@@ -94,6 +94,8 @@ accuracy_score(y_test, y_predforest)
 
 import pickle
 pickle.dump(forest, open('Random_forest_model.pkl', 'wb'))
+with open('Random_forest_model.pkl', 'rb') as file:
+    load_clf = pickle.load(file)
 
 import streamlit as st
 import pandas as pd
