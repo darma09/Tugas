@@ -191,5 +191,5 @@ else:
 st.write(prediction)
 
 st.subheader('Prediksi Terkena penyakit Jantung')
-st.write(prediction_proba*100,'%')
+st.write(prediction_proba_percent)
 st.write("0: Tidak Ada Penyakit Jantung, 1: Ada Penyakit Jantung")
