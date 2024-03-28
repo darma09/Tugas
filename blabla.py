@@ -106,7 +106,7 @@ import streamlit as st
 
 st.write("""
 # Heart disease Prediction App
-
+Darma Alif Rakhaa
 This app predicts if a patient has a heart disease.
 
 Information:
@@ -119,6 +119,8 @@ Information:
 6. Gula darah puasa > 120 mg/dl (1: true, 0: false) (Enter fasting blood sugar: 1 for true, 0 for false)
 7. Gula darah sehingga hasil elektrokardiografi istirahat > 90 mg/dl (1: normal, 0: abnormal) (Enter resting electrocardiographic results: 1 for normal, 0 for abnormal)
 8. EKG epidimiokardiografi maksimum yang dicapai adalah ≥ 50% QRS normal (1: ya, 0: tidak) (Enter maximum heart rate achieved: 1 for yes, 0 for no)
+NOTE : HASIL INI MASIH BELUM PASTI PERLU KONSULTASI LEBIH LANJUT DENGAN DOKTER
+
 """)
 
 st.sidebar.header('User Input Features')
