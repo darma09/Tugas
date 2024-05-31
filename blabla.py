@@ -21,6 +21,10 @@ import streamlit as st
 filePath = 'https://raw.githubusercontent.com/darma09/Tugas/main/heart.csv'
 data = pd.read_csv(filePath)
 
+# Displaying the original data
+st.write("### Original Dataset")
+st.write(data)
+
 data = pd.get_dummies(data, columns=['sex', 'cp', 'fbs', 'restecg', 'exang', 'slope', 'ca', 'thal'])
 
 y = data['target']
