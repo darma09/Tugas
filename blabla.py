@@ -8,12 +8,7 @@ Original file is located at
 """
 
 import pandas as pd
-from sklearn.linear_model import LogisticRegression
-from sklearn import svm
-from sklearn.linear_model import SGDClassifier
-from sklearn import tree
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
 import pickle
 import streamlit as st
@@ -41,50 +36,76 @@ with open('Random_forest_model.pkl', 'rb') as file:
 st.write("""
 # Heart Disease Prediction App
 Darma Alif Rakhaa
+
+NIM: 210322607280
+
+Universitas Negeri Malang
+
 This app predicts if a patient has a heart disease.
 
+Informasi:
+1. Masukkan umur kalian
+2. Jenis kelamin kalian (laki-laki atau perempuan)
+3. Jenis nyeri dada (angina tipikal, angina atipikal, nyeri non-angina, tanpa gejala)
+4. Tekanan darah istirahat (dalam mm Hg)
+5. Kolesterol serum (dalam mg/dl)
+6. Gula darah puasa > 120 mg/dl (ya atau tidak)
+7. Hasil elektrokardiografi istirahat (normal atau abnormal)
+8. Detak jantung maksimum yang dicapai (dalam bpm)
+9. Angina yang diinduksi oleh latihan (ya atau tidak)
+10. Depresi ST yang diinduksi oleh latihan relatif terhadap istirahat (dalam mm)
+11. Kemiringan segmen ST puncak latihan (naik, datar, turun)
+12. Jumlah pembuluh darah utama yang diwarnai oleh fluoroskopi (0-3)
+13. Thalassemia (normal, cacat tetap, cacat reversibel)
+
 Information:
-1. Masukan umur kalian (Enter your age)
-2. Jenis kelamin kalian (0: laki-laki, 1: perempuan) (Enter your gender: 0 for male, 1 for female)
-3. Jenis nyeri dada (0: angina tipikal, 1: angina atipikal, 2: nyeri non-angina, 3: tanpa gejala) (Enter chest pain type: 0 for typical angina, 1 for atypical angina, 2 for non-anginal pain, 3 for asymptomatic)
-4. Tekanan darah istirahat (Enter resting blood pressure)
-5. Kolesterol serum dalam mg/dl (Enter serum cholestoral in mg/dl)
-6. Gula darah puasa > 120 mg/dl (1: true, 0: false) (Enter fasting blood sugar: 1 for true, 0 for false)
-7. Gula darah sehingga hasil elektrokardiografi istirahat > 90 mg/dl (1: normal, 0: abnormal) (Enter resting electrocardiographic results: 1 for normal, 0 for abnormal)
-8. EKG epidimiokardiografi maksimum yang dicapai adalah ≥ 50% QRS normal (1: ya, 0: tidak) (Enter maximum heart rate achieved: 1 for yes, 0 for no)
-NOTE : HASIL INI MASIH BELUM PASTI PERLU KONSULTASI LEBIH LANJUT DENGAN DOKTER
+1. Enter your age
+2. Enter your gender (male or female)
+3. Enter chest pain type (typical angina, atypical angina, non-anginal pain, asymptomatic)
+4. Enter resting blood pressure (in mm Hg)
+5. Enter serum cholestoral (in mg/dl)
+6. Enter fasting blood sugar > 120 mg/dl (yes or no)
+7. Enter resting electrocardiographic results (normal or abnormal)
+8. Enter maximum heart rate achieved (in bpm)
+9. Enter exercise induced angina (yes or no)
+10. Enter ST depression induced by exercise relative to rest (in mm)
+11. Enter the slope of the peak exercise ST segment (upsloping, flat, downsloping)
+12. Enter number of major vessels colored by fluoroscopy (0-3)
+13. Enter thalassemia (normal, fixed defect, reversible defect)
 """)
 
 st.sidebar.header('User Input Features')
 
 def user_input_features():
-    age = st.sidebar.number_input('Masukan umur: ')
-    sex = st.sidebar.selectbox('Gender', (0, 1))
-    cp = st.sidebar.selectbox('Chest pain type', (0, 1, 2, 3))
-    tres = st.sidebar.number_input('Resting blood pressure: ')
-    chol = st.sidebar.number_input('Serum cholestoral in mg/dl: ')
-    fbs = st.sidebar.selectbox('Fasting blood sugar', (0, 1))
-    res = st.sidebar.number_input('Resting electrocardiographic results: ', 0, 1)
-    tha = st.sidebar.number_input('Maximum heart rate achieved: ')
-    exa = st.sidebar.selectbox('Exercise induced angina: ', (0, 1))
-    old = st.sidebar.number_input('Oldpeak: ')
-    slope = st.sidebar.number_input('The slope of the peak exercise ST segment: ', 0, 2)
-    ca = st.sidebar.selectbox('Number of major vessels', (0, 1, 2, 3))
-    thal = st.sidebar.selectbox('Thal', (0, 1, 2, 3))
+    age = st.sidebar.slider('Masukkan umur: ', 0, 120, 25)
+    sex = st.sidebar.selectbox('Gender', ('laki-laki', 'perempuan'))
+    cp = st.sidebar.selectbox('Jenis nyeri dada', ('angina tipikal', 'angina atipikal', 'nyeri non-angina', 'tanpa gejala'))
+    tres = st.sidebar.slider('Tekanan darah istirahat: ', 80, 200, 120)
+    chol = st.sidebar.slider('Kolesterol serum dalam mg/dl: ', 100, 600, 200)
+    fbs = st.sidebar.selectbox('Gula darah puasa > 120 mg/dl', ('ya', 'tidak'))
+    res = st.sidebar.selectbox('Hasil elektrokardiografi istirahat', ('normal', 'abnormal'))
+    tha = st.sidebar.slider('Detak jantung maksimum yang dicapai: ', 60, 220, 150)
+    exa = st.sidebar.selectbox('Angina yang diinduksi oleh latihan', ('ya', 'tidak'))
+    old = st.sidebar.slider('Depresi ST yang diinduksi oleh latihan relatif terhadap istirahat: ', 0.0, 10.0, 1.0)
+    slope = st.sidebar.selectbox('Kemiringan segmen ST puncak latihan', ('naik', 'datar', 'turun'))
+    ca = st.sidebar.selectbox('Jumlah pembuluh darah utama yang diwarnai oleh fluoroskopi', (0, 1, 2, 3))
+    thal = st.sidebar.selectbox('Thalassemia', ('normal', 'cacat tetap', 'cacat reversibel'))
 
-    data = {'age': age,
-            'sex': sex,
-            'cp': cp,
-            'trestbps': tres,
-            'chol': chol,
-            'fbs': fbs,
-            'restecg': res,
-            'thalach': tha,
-            'exang': exa,
-            'oldpeak': old,
-            'slope': slope,
-            'ca': ca,
-            'thal': thal}
+    data = {
+        'age': age,
+        'sex': 1 if sex == 'perempuan' else 0,
+        'cp': {'angina tipikal': 0, 'angina atipikal': 1, 'nyeri non-angina': 2, 'tanpa gejala': 3}[cp],
+        'trestbps': tres,
+        'chol': chol,
+        'fbs': 1 if fbs == 'ya' else 0,
+        'restecg': 1 if res == 'normal' else 0,
+        'thalach': tha,
+        'exang': 1 if exa == 'ya' else 0,
+        'oldpeak': old,
+        'slope': {'naik': 0, 'datar': 1, 'turun': 2}[slope],
+        'ca': ca,
+        'thal': {'normal': 0, 'cacat tetap': 1, 'cacat reversibel': 2}[thal]
+    }
     features = pd.DataFrame(data, index=[0])
     return features
 
@@ -100,7 +121,7 @@ if st.sidebar.button('Predict'):
 
     prediction = load_clf.predict(input_encoded)
     prediction_proba = load_clf.predict_proba(input_encoded)
-    prediction_proba_percent = ['Ada penyakit Jantung: {:.2f}%'.format(prob * 100) if prob >= 0.5 else 'Tidak ada penyakit jantung: {:.2f}%'.format(prob * 100) for prob in prediction_proba[0]]
+    prediction_proba_percent = ['Ada penyakit Jantung: {:.1f}%'.format(prob * 100) if prob >= 0.5 else 'Tidak ada penyakit jantung: {:.1f}%'.format(prob * 100) for prob in prediction_proba[0]]
     prediction_proba_percent = ', '.join(prediction_proba_percent)
 
     st.subheader('Prediction')
